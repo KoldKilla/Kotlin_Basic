@@ -39,15 +39,21 @@ fun printAircraftList(aircraftList: List<AircraftFirst>) {
     }
 }
 
+
+
 // Функция для получения информации о самолете
 fun getAircraftInfo(aircraftList: List<AircraftFirst>) {
     println("Введите номер самолета:")
     val aircraftNumber = readLine()!!
 
     val aircraft = aircraftList.find { it.number == aircraftNumber }
+
     if (aircraft != null) {
-        println("Информация о самолете:")
-        println(aircraft)
+        println("Номер самолёта: ${aircraft.number}")
+        println("Вместимость бака: ${aircraft.tankCapacity}")
+        if (aircraft is LoadCapacity){
+            println("Грузоподъемность: ${aircraft.cargoCapacity}")
+        }
     } else {
         println("Самолет не найден")
     }
